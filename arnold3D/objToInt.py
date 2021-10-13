@@ -1,13 +1,13 @@
 filename = input("name without .obj of the file")
-newLines = []
+vertex = []
+faces = []
 
 with open(filename+'.obj', 'r') as file:
     lines = file.read()
     for l in lines.split('\n'):
         if len(l) > 1:
-            # save vertex as 0
             if l[0] == 'v':
-                newL = "0"
+                newL = ""
                 keep = False
                 for c in l:
                     if c == ".":
@@ -16,9 +16,10 @@ with open(filename+'.obj', 'r') as file:
                         keep = True
                     if keep:
                         newL += c
-                newLines.append(newL)
+                v = tuple(newL.split(' '))
+                vertex.append(v)
             if l[0] == 'f':
-                newL = "1"
+                newL = ""
                 keep = False
                 for c in l:
                    if c == "/":
@@ -27,9 +28,9 @@ with open(filename+'.obj', 'r') as file:
                        keep = True
                    if keep:
                        newL += c
-                newLines.append(newL)
+                f = tuple(newL.split(' '))
+                faces.append(f)
 
-with open(filename+'.txt', 'w') as file:
-    for l in newLines:
-        file.write(l+'\n')
+
+
 
