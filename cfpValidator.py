@@ -5,6 +5,7 @@
 
 cpf = int(input('enter your cpf\n'))
 
+# Extract ABC...JK from int
 k=cpf%10
 cpf-=k
 cpf/=10
@@ -37,7 +38,7 @@ cpf-=b
 cpf/=10
 a=cpf%10
 
-# pr
+# Expected J
 expectedJ = a*10 + b*9 + c*8 + d*7 + e*6 + f*5 + g*4 + h*3 + i*2
 expectedJ = int(expectedJ % 11)
 if expectedJ < 2:
@@ -45,7 +46,7 @@ if expectedJ < 2:
 else:
     expectedJ = 11 - expectedJ
 
-
+# Expected K
 expectedK = a*11 + b*10 + c*9 + d*8 + e*7 + f*6 + g*5 + h*4 + i*3 + expectedJ*2
 expectedK = int(expectedK % 11)
 if expectedK > 1:
@@ -53,6 +54,7 @@ if expectedK > 1:
 else:
     expectedK = 0
 
+# Valid if (Expected X == Digit X)
 if (expectedJ == j) & (expectedK == k):
     print('Valid CPF')
 else:
